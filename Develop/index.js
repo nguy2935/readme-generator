@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const util = require('util');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -25,8 +26,9 @@ const questions = [
         message: "How do you use your app?"
         name: "Usage"
     }, {
-        type: "input"
-        message: "What license did you use?"
+        type: "list"
+        message: "What license did you use?",
+        choices: ['MIT License']
         name: "License"
         Contributing 
         Tests 
@@ -35,7 +37,11 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, err => {
+        
+    })
+}
 fs.writeFile(`./$(fileName.toLowerCase().split(' '))`)
 
 
