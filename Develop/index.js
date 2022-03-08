@@ -1,40 +1,58 @@
-// TODO: Include packages needed for this application
+// Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
 
-// TODO: Create an array of questions for user input
-const questions = [
+const = require('./utils/generateMarkdown.js');
+
+// Create an array of questions for user input
+const questions = () => {
+    // inquirer to prompt questions to the user
+    return inquirer.prompt(
     {
-        type: "input",
-        message: "What is thte title of the project?",
-        name: "Title"
+        type: 'input',
+        name: 'Title',
+        message: 'What is thte title of the project?',
     }, {
-        type "input", 
-        message: "What is the project about? Give a detailed description."
-        name: "Description"
+        type: 'input', 
+        name: 'Description',
+        message: 'What is the project about? Give a detailed description.'
     }, {
-        type: "input",
-        message: "Table of Contents"
-        name: "Table of Contents"
+        type: 'input',
+        name: 'Table of Contents',
+        message: 'Table of Contents'
     }, {
-        type: "input",
-        message: "How do you install your app?"
-        name: "Installation"
+        type:'"input',
+        name: 'Installation',
+        message: 'How did you install your app?'
     }, {
-        type: "input",
-        message: "How do you use your app?"
-        name: "Usage"
+        type: 'input',
+        name: 'Usage',
+        message: 'How do you use your app?'
     }, {
+<<<<<<< HEAD
         type: "list"
         message: "What license did you use?",
         choices: ['MIT License']
+=======
+        type: 'list'
+>>>>>>> develop
         name: "License"
-        Contributing 
-        Tests 
-        Questions
+        message: 'Which license did you use?'
+        choices: ['Apache License', 'MIT License']
+    }, {
+        type: 'input',
+        name: 'Contributing',
+        message: 'How can other developers contirbute to your project?'
+    }, {
+        type: 'input'
+        name: 'Tests',
+        message: 'How to run your application? How to test it?',
     }
-];
+  ]);
+};
+
+questions().then( answers => console.log(answers));
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
