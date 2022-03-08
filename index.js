@@ -2,7 +2,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const MarkdownGenerator = require('./utils/generateMarkdown.js');
+const markdownGenerator = require('./utils/generateMarkdown.js');
 
 // Create an array of questions for user input
 const questions = () => {
@@ -42,7 +42,7 @@ const questions = () => {
         message: 'Which license did you use?',
         choices: ['Apache License', 'MIT License']
     }, {
-        type: 'input'
+        type: 'input',
         name: 'user_name',
         message: 'What is your name?'
     }, {
@@ -54,10 +54,10 @@ const questions = () => {
         name: 'email',
         message: 'What is your e-mail address?'
     },
-  ]);
+  );
 };
 
-questions().then( answers => console.log(answers));
+//questions().then( answers => console.log(answers));
 
 // Create a function to write README file
 function writeToFile(fileName, data) {
@@ -69,9 +69,22 @@ function writeToFile(fileName, data) {
     });
 }
 
+questions()
+.then(answers => {
+    return markdownGenerator(answers);
+})
 
-// TODO: Create a function to initialize app
-function init() {}
+.then(data => {
+    return writeToFile(data);
+})
 
-// Function call to initialize app
-init();
+// errors to catch
+.catch(err => {
+    console.log(err)
+})
+
+// // TODO: Create a function to initialize app
+// function init() {}
+
+// // Function call to initialize app
+// init();
