@@ -30,13 +30,7 @@ const questions = () => {
         name: 'Usage',
         message: 'How do you use your app?'
     }, {
-<<<<<<< HEAD
-        type: "list"
-        message: "What license did you use?",
-        choices: ['MIT License']
-=======
         type: 'list'
->>>>>>> develop
         name: "License"
         message: 'Which license did you use?'
         choices: ['Apache License', 'MIT License']
@@ -57,10 +51,12 @@ questions().then( answers => console.log(answers));
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, err => {
-        
-    })
+        if (err) {
+            return console.log(err);
+        }
+        console.log("Your README.md file has been successfully created!")
+    });
 }
-fs.writeFile(`./$(fileName.toLowerCase().split(' '))`)
 
 
 // TODO: Create a function to initialize app
