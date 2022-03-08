@@ -1,14 +1,12 @@
 // Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const util = require('util');
-
-const markdownGenerator = require('./utils/generateMarkdown.js');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 
 // Create an array of questions for user input
 const questions = () => {
     // inquirer to prompt questions to the user
-    return inquirer.prompt(
+    return inquirer.prompt([
     {
         type: 'input',
         name: 'Title',
@@ -41,7 +39,7 @@ const questions = () => {
         type: 'list',
         name: "License",
         message: 'Which license did you use?',
-        choices: ['Apache', 'MIT', 'GNU', 'None'],
+        choices: ['Apache 2.0', 'MIT', 'GPL', 'None'],
     }, {
         type: 'input',
         name: 'user_name',
@@ -55,14 +53,14 @@ const questions = () => {
         name: 'email',
         message: 'What is your e-mail address?',
     },
-  );
+  ]);
 };
 
 //questions().then( answers => console.log(answers));
 
 // Create a function to write README file
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, err => {
+function writeToFile(data) {
+    fs.writeFile("README.md", data, err => {
         if (err) {
             return console.log(err);
         }
@@ -70,24 +68,16 @@ function writeToFile(fileName, data) {
     });
 }
 
-const writeFileAsync = util.promisify(writeToFile);
+// Function call to initialize app
+function init() {
+    questions()
+    .then(answers => {
+        return generateMarkdown(answers);
+    })
+    .then(data => {
+        return writeToFile(data);
+    })
 
-questions()
-.then(answers => {
-    return markdownGenerator(answers);
-})
+}
 
-.then(data => {
-    return writeToFile(data);
-})
-
-// errors to catch
-.catch(err => {
-    console.log(err)
-})
-
-// // TODO: Create a function to initialize app
-// function init() {}
-
-// // Function call to initialize app
-// init();
+init();
