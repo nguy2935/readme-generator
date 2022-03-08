@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/nguy2935/readme-generator/issues"
   },
-  "homepage": "https://github.com/nguy2935/readme-generator#readme"
+  "homepage": "https://github.com/nguy2935/readme-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  }
 }

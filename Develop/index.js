@@ -3,36 +3,48 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 // TODO: Create an array of questions for user input
-const questions = [
+const questions = () => {
+    return inquirer.prompt(
     {
-        type: "input",
-        message: "What is thte title of the project?",
-        name: "Title"
+        type: 'input',
+        name: 'Title',
+        message: 'What is thte title of the project?',
     }, {
-        type "input", 
-        message: "What is the project about? Give a detailed description."
-        name: "Description"
+        type: 'input', 
+        name: 'Description',
+        message: 'What is the project about? Give a detailed description.'
     }, {
-        type: "input",
-        message: "Table of Contents"
-        name: "Table of Contents"
+        type: 'input',
+        name: 'Table of Contents',
+        message: 'Table of Contents'
     }, {
-        type: "input",
-        message: "How do you install your app?"
-        name: "Installation"
+        type:'"input',
+        name: 'Installation',
+        message: 'How did you install your app?'
     }, {
-        type: "input",
-        message: "How do you use your app?"
-        name: "Usage"
+        type: 'input',
+        name: 'Usage',
+        message: 'How do you use your app?'
     }, {
-        type: "input"
-        message: "What license did you use?"
+        type: 'list'
         name: "License"
-        Contributing 
-        Tests 
+        message: 'Which license did you use?'
+        choices: ['Apache License', 'MIT License']
+    }, {
+        type: 'input',
+        name: 'Contributing',
+        message: 'How can other developers contirbute to your project?'
+    }, {
+        type: 'input'
+        name: 'Tests',
+        message: 'How to run your application? How to test it?',
+    }
         Questions
     }
-];
+  ]);
+};
+
+questions().then( answers => console.log(answers));
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
