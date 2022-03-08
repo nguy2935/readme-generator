@@ -1,9 +1,8 @@
 // Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const util = require('util');
 
-const = require('./utils/generateMarkdown.js');
+const MarkdownGenerator = require('./utils/generateMarkdown.js');
 
 // Create an array of questions for user input
 const questions = () => {
@@ -30,19 +29,31 @@ const questions = () => {
         name: 'Usage',
         message: 'How do you use your app?'
     }, {
-        type: 'list'
-        name: "License"
-        message: 'Which license did you use?'
-        choices: ['Apache License', 'MIT License']
-    }, {
         type: 'input',
         name: 'Contributing',
         message: 'How can other developers contirbute to your project?'
     }, {
-        type: 'input'
+        type: 'input',
         name: 'Tests',
-        message: 'How to run your application? How to test it?',
-    }
+        message: 'How to run your application? What command would you run your test?'
+    }, {
+        type: 'list',
+        name: "License",
+        message: 'Which license did you use?',
+        choices: ['Apache License', 'MIT License']
+    }, {
+        type: 'input'
+        name: 'user_name',
+        message: 'What is your name?'
+    }, {
+        type: 'input',
+        name: 'github_username',
+        message: 'What is your GitHub username?'
+    }, {
+        type: 'input',
+        name: 'email',
+        message: 'What is your e-mail address?'
+    },
   ]);
 };
 
