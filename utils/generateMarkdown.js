@@ -27,8 +27,6 @@ function renderLicenseSection(license) {
 function generateMarkdown(data) {
   return `# ${data.title}
   ${renderLicenseBadge(data.license)}
-  ![GitHub License](http://img.shields.io/badge/license-${data.license}-blue.svg)
-
   ## Description
   ${data.description}
 
@@ -37,7 +35,7 @@ function generateMarkdown(data) {
   * [Usage](#usage)
   * [Contributing](#contributing)
   * [Tests](#tests)
-  ${renderLicenseLink(data.license)}
+  * [License](#license)
   * [Questions](#questions)
   
   ## Installation
