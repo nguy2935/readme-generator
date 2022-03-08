@@ -1,9 +1,12 @@
-// TODO: Include packages needed for this application
+// Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-// TODO: Create an array of questions for user input
+const = require('./utils/generateMarkdown.js');
+
+// Create an array of questions for user input
 const questions = () => {
+    // inquirer to prompt questions to the user
     return inquirer.prompt(
     {
         type: 'input',
@@ -38,8 +41,6 @@ const questions = () => {
         type: 'input'
         name: 'Tests',
         message: 'How to run your application? How to test it?',
-    }
-        Questions
     }
   ]);
 };
