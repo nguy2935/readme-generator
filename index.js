@@ -1,6 +1,7 @@
 // Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const util = require('util');
 
 const markdownGenerator = require('./utils/generateMarkdown.js');
 
@@ -15,44 +16,44 @@ const questions = () => {
     }, {
         type: 'input', 
         name: 'Description',
-        message: 'What is the project about? Give a detailed description.'
+        message: 'What is the project about? Give a detailed description.',
     }, {
         type: 'input',
         name: 'Table of Contents',
-        message: 'Table of Contents'
+        message: 'Table of Contents',
     }, {
         type:'"input',
         name: 'Installation',
-        message: 'How did you install your app?'
+        message: 'How did you install your app?',
     }, {
         type: 'input',
         name: 'Usage',
-        message: 'How do you use your app?'
+        message: 'How do you use your app?',
     }, {
         type: 'input',
         name: 'Contributing',
-        message: 'How can other developers contirbute to your project?'
+        message: 'How can other developers contirbute to your project?',
     }, {
         type: 'input',
         name: 'Tests',
-        message: 'How to run your application? What command would you run your test?'
+        message: 'How to run your application? What command would you run your test?',
     }, {
         type: 'list',
         name: "License",
         message: 'Which license did you use?',
-        choices: ['Apache License', 'MIT License']
+        choices: ['Apache', 'MIT', 'GNU', 'None'],
     }, {
         type: 'input',
         name: 'user_name',
-        message: 'What is your name?'
+        message: 'What is your name?',
     }, {
         type: 'input',
         name: 'github_username',
-        message: 'What is your GitHub username?'
+        message: 'What is your GitHub username?',
     }, {
         type: 'input',
         name: 'email',
-        message: 'What is your e-mail address?'
+        message: 'What is your e-mail address?',
     },
   );
 };
@@ -65,9 +66,11 @@ function writeToFile(fileName, data) {
         if (err) {
             return console.log(err);
         }
-        console.log("Your README.md file has been successfully created!")
+        console.log("README.md file has been successfully created!")
     });
 }
+
+const writeFileAsync = util.promisify(writeToFile);
 
 questions()
 .then(answers => {

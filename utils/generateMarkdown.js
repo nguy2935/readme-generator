@@ -46,8 +46,8 @@ function generateMarkdown(data) {
   ## Usage
   ${data.usage}
 
-  ${renderLicenseSection(data.license)
-  }
+  ${renderLicenseSection(data.license)}
+  
   ## Contributing
   ${data.contributors}
 
@@ -56,7 +56,6 @@ function generateMarkdown(data) {
 
   ## License
   This project is license under ${data.license}
-  ${renderLicenseBadge(license)}
 
   ## Questions
   If you have any questions, contact me at ${data.email}. You can view more projects at https://github.com/${data.github}.
